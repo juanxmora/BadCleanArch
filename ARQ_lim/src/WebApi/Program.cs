@@ -1,6 +1,6 @@
 using Infrastructure.Data;
 using Infrastructure.Logging;
-
+using Application.UseCases;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Logging.ClearProviders();
@@ -37,7 +37,7 @@ app.MapPost("/orders", (HttpContext http) =>
     var qty = parts.Length > 2 ? int.Parse(parts[2]) : 1;
     var price = parts.Length > 3 ? decimal.Parse(parts[3]) : 0.99m;
 
-    var uc = new CreateOrderUseCase();
+    var uc = new CreateOrder();
     var order = uc.Execute(customer, product, qty, price);
 
     return Results.Ok(order);
