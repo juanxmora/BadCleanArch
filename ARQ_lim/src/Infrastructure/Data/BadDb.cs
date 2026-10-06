@@ -27,3 +27,4 @@ public static class BadDb
         conn.Open();
         return cmd.ExecuteReader(); 
 }
+}
